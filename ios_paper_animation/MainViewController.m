@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "AVHexColor.h"
 
 @interface MainViewController ()
 
@@ -17,12 +18,11 @@
 @property (strong, nonatomic) NSMutableDictionary *viewPointMap;
 @property (strong, nonatomic) NSMutableDictionary *handPointMap;
 
+/* Section View */
 - (void)onSectionViewPan:(UIPanGestureRecognizer *)panGestureRecognizer;
-- (void)onSectionViewTap:(id)sender;
-
+- (void)onSectionViewTap:(UITapGestureRecognizer *)tapGestureRecognizer;
 - (void)moveSectionViewDown;
 - (void)moveSectionViewUp;
-
 - (bool)isSectionViewOutofBounds;
 
 @end
@@ -55,8 +55,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(onSectionViewPan:)];
+    UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(onSectionViewPan:)];
     [self.sectionView addGestureRecognizer:panGestureRecognizer];
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc]
+                                                    initWithTarget:self
+                                                    action:@selector(onSectionViewTap:)];
+    [self.sectionView addGestureRecognizer:tapGestureRecognizer];
+    
+    [self.view setBackgroundColor:[AVHexColor colorWithHexString:@"#000000"]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,10 +77,6 @@
 - (void)onSectionViewPan:(UIPanGestureRecognizer *)panGestureRecognizer
 {
     NSLog(@"onSectionViewPan");
-
-    //if ([self isSectionViewOutofBounds]) {
-    //    return;
-    //}
     
     CGPoint point = [panGestureRecognizer locationInView:self.view];
     CGPoint velocity = [panGestureRecognizer velocityInView:self.view];
@@ -128,7 +133,7 @@
     }
 }
 
-- (void)onSectionViewTap:(id)sender
+- (void)onSectionViewTap:(UIPanGestureRecognizer *)panGestureRecognizer
 {
     NSLog(@"onSectionViewTap");
     
