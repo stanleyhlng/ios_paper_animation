@@ -89,12 +89,23 @@
         self.viewPointMap[@"changed"] = [NSValue valueWithCGPoint:self.sectionView.frame.origin];
         self.handPointMap[@"changed"] = [NSValue valueWithCGPoint:point];
         
-        CGRect frame = self.sectionView.frame;
-        frame.origin.y =
+        if ([self isSectionViewOutofBounds]) {
+            float scale = 1 / log10(fabsf([self.handPointMap[@"changed"] CGPointValue].y - [self.handPointMap[@"begin"] CGPointValue].y));
+            NSLog(@"%f", scale);
+            
+            CGRect frame = self.sectionView.frame;
+            frame.origin.y =
+            [self.viewPointMap[@"begin"] CGPointValue].y +
+            ([self.handPointMap[@"changed"] CGPointValue].y - [self.handPointMap[@"begin"] CGPointValue].y) * scale;
+            self.sectionView.frame = frame;
+        }
+        else {
+            CGRect frame = self.sectionView.frame;
+            frame.origin.y =
             [self.viewPointMap[@"begin"] CGPointValue].y +
             ([self.handPointMap[@"changed"] CGPointValue].y - [self.handPointMap[@"begin"] CGPointValue].y);
-        
-        self.sectionView.frame = frame;
+            self.sectionView.frame = frame;
+        }
         
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Gesture ended: %@ v: %@", NSStringFromCGPoint(point), NSStringFromCGPoint(velocity));
