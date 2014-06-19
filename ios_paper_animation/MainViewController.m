@@ -24,6 +24,7 @@
 - (void)moveSectionViewDown;
 - (void)moveSectionViewUp;
 - (bool)isSectionViewOutofBounds;
+- (bool)isSectionViewDown;
 
 @end
 
@@ -81,7 +82,6 @@
     CGPoint point = [panGestureRecognizer locationInView:self.view];
     CGPoint velocity = [panGestureRecognizer velocityInView:self.view];
     
-    
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
         NSLog(@"Gesture began at: %@ v: %@", NSStringFromCGPoint(point), NSStringFromCGPoint(velocity));
         
@@ -136,6 +136,12 @@
 - (void)onSectionViewTap:(UIPanGestureRecognizer *)panGestureRecognizer
 {
     NSLog(@"onSectionViewTap");
+    
+    if ([self isSectionViewDown]) {
+        [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self moveSectionViewUp];
+        } completion:nil];
+    }
     
     /*
     if ([self isSectionViewMovedDown]) {
@@ -202,6 +208,15 @@
     }
     
     return false;
+}
+
+- (bool)isSectionViewDown
+{
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGRect title = self.sectionCoverTitleView.frame;
+    CGRect view = self.sectionView.frame;
+
+    return view.origin.y + title.size.height == screen.size.height;
 }
 
 @end
