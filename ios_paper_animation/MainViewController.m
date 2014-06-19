@@ -10,6 +10,15 @@
 
 @interface MainViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *sectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *sectionCoverImageView;
+@property (weak, nonatomic) IBOutlet UIView *sectionCoverTitleView;
+
+- (IBAction)onTap:(id)sender;
+
+- (void)sectionViewTapped:(id)sender;
+- (bool)isTappedSectionView;
+
 @end
 
 @implementation MainViewController
@@ -33,6 +42,42 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)onTap:(id)sender
+{
+    NSLog(@"onTap");
+    [self sectionViewTapped:sender];
+}
+
+- (void)sectionViewTapped:(id)sender
+{
+    NSLog(@"sectionViewTapped");
+    
+    if ([self isTappedSectionView]) {
+        // Move up section view
+        CGRect frame = self.sectionView.frame;
+        frame.origin.y = 0;
+        self.sectionView.frame = frame;
+    }
+    else {
+        // Move down section view
+        
+        CGRect screen = [[UIScreen mainScreen] bounds];
+        NSLog(@"screen %@", NSStringFromCGRect(screen));
+        
+        CGRect title = self.sectionCoverTitleView.frame;
+        NSLog(@"title %@", NSStringFromCGRect(title));
+        
+        CGRect frame = self.sectionView.frame;
+        frame.origin.y = screen.size.height - title.size.height;
+        self.sectionView.frame = frame;
+    }
+}
+
+- (bool)isTappedSectionView
+{
+    return self.sectionView.frame.origin.y != 0;
 }
 
 @end

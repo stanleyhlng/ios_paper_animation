@@ -29,6 +29,13 @@ x hours spent in total
    * Accessing location, velocity, rotation, and scale
    * Processing gesture state
 
+ * Objective-C
+   * NSStringFromCGRect
+```
+    CGRect title = self.sectionCoverTitleView.frame;
+    NSLog(@"title %@", NSStringFromCGRect(title));
+```
+    
 ## Libraries
  * AVHexColor 1.2.0
  * Reveal-iOS-SDK 1.0.4
