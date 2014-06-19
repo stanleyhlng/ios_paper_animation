@@ -33,20 +33,12 @@
                         </imageView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="dJF-Pi-pd0" appends="YES" id="jVS-Au-Lqa"/>
-                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <tapGestureRecognizer id="dJF-Pi-pd0">
-            <connections>
-                <action selector="onTap:" destination="-1" id="eOM-EP-hRS"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="section-headlines" width="318" height="568"/>
