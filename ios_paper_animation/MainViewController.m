@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSMutableDictionary *viewPointMap;
 @property (strong, nonatomic) NSMutableDictionary *handPointMap;
 
+@property (assign, nonatomic) NSInteger sectionCoverImageIndex;
+
 /* Section View */
 - (void)onSectionViewPan:(UIPanGestureRecognizer *)panGestureRecognizer;
 - (void)onSectionViewTap:(UITapGestureRecognizer *)tapGestureRecognizer;
@@ -26,6 +28,8 @@
 - (bool)isSectionViewOutofBounds;
 - (bool)isSectionViewDown;
 
+- (void)customizeSectionCoverImages;
+- (void)loadSectionCoverImage;
 @end
 
 @implementation MainViewController
@@ -67,6 +71,8 @@
     [self.sectionView addGestureRecognizer:tapGestureRecognizer];
     
     //[self.view setBackgroundColor:[AVHexColor colorWithHexString:@"#000000"]];
+    
+    [self customizeSectionCoverImages];
 }
 
 - (void)didReceiveMemoryWarning
@@ -217,6 +223,51 @@
     CGRect view = self.sectionView.frame;
 
     return view.origin.y + title.size.height == screen.size.height;
+}
+
+- (void)customizeSectionCoverImages
+{
+    NSLog(@"customizeSectionCoverImages");
+    
+    self.sectionCoverImageIndex = 1;
+    [self loadSectionCoverImage];
+    
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(loadSectionCoverImage) userInfo:nil repeats:YES];
+}
+
+- (void)loadSectionCoverImage
+{
+    NSLog(@"loadSectionCoverImage");
+    
+    int idx = self.sectionCoverImageIndex;
+    NSString *imageName = [NSString stringWithFormat:@"section-cover-%d", idx];
+    NSLog(@"imageName: %@", imageName);
+    self.sectionCoverImageIndex = idx % 10 + 1;
+
+    [UIView
+     animateWithDuration:1.0f
+     delay:0.0f
+     options:UIViewAnimationOptionCurveEaseIn
+     animations:^{
+    
+        self.sectionCoverImageView.alpha = 0.1;
+     
+     } completion:^(BOOL finished) {
+        
+        [self.sectionCoverImageView setImage: [UIImage imageNamed:imageName]];
+        
+        [UIView
+         animateWithDuration:1.0f
+         delay:0.0f
+         options:UIViewAnimationOptionCurveEaseOut
+         animations:^{
+         
+             self.sectionCoverImageView.alpha = 1;
+             
+         }
+         completion:nil];
+        
+    }];
 }
 
 @end
