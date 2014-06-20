@@ -6,6 +6,7 @@ ios_paper_animation
 This is an iOS prototyping application for Paper navigation.
 
 ## Walkthrough of all user stories
+[![image](https://raw.githubusercontent.com/wiki/stanleyhlng/ios_paper_animation/assets/ios_paper_animation.gif)](https://raw.githubusercontent.com/wiki/stanleyhlng/ios_paper_animation/assets/ios_paper_animation.gif)
 
 ## Completed user stories
  * [x] Dragging the headline should reveal the menu
