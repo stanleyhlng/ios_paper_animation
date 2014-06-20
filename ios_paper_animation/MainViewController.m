@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIView *sectionView;
 @property (weak, nonatomic) IBOutlet UIImageView *sectionCoverImageView;
 @property (weak, nonatomic) IBOutlet UIView *sectionCoverTitleView;
+@property (weak, nonatomic) IBOutlet UIImageView *menuImageView;
 
 @property (strong, nonatomic) NSMutableDictionary *viewPointMap;
 @property (strong, nonatomic) NSMutableDictionary *handPointMap;
@@ -70,8 +71,6 @@
                                                     action:@selector(onSectionViewTap:)];
     [self.sectionView addGestureRecognizer:tapGestureRecognizer];
     
-    //[self.view setBackgroundColor:[AVHexColor colorWithHexString:@"#000000"]];
-    
     [self customizeSectionCoverImages];
 }
 
@@ -118,6 +117,19 @@
             self.sectionView.frame = frame;
         }
         
+        {
+            CGRect screen = [[UIScreen mainScreen] bounds];
+            CGRect title = self.sectionCoverTitleView.frame;
+            CGRect view = self.sectionView.frame;
+
+            float d2 = screen.size.height - title.size.height;
+            float d1 = view.origin.y;
+            
+            float a = d1 / d2;
+            NSLog(@"alpha: %f", a);
+            self.menuImageView.alpha = a;
+        }
+        
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Gesture ended: %@ v: %@", NSStringFromCGPoint(point), NSStringFromCGPoint(velocity));
 
@@ -128,12 +140,18 @@
             // drag down
             [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 [self moveSectionViewDown];
+                
+                self.menuImageView.alpha = 0.9;
+
             } completion:nil];
         }
         else {
             // drag up
             [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                 [self moveSectionViewUp];
+                
+                self.menuImageView.alpha = 0;
+
             } completion:nil];
         }
     }

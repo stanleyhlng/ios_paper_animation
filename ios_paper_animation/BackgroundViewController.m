@@ -10,6 +10,8 @@
 
 @interface BackgroundViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *menuImageView;
+
 @end
 
 @implementation BackgroundViewController
