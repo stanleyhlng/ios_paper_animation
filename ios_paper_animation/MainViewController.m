@@ -31,6 +31,8 @@
 
 - (void)customizeSectionCoverImages;
 - (void)loadSectionCoverImage;
+
+- (void)customizeSectionStories;
 @end
 
 @implementation MainViewController
@@ -72,6 +74,7 @@
     [self.sectionView addGestureRecognizer:tapGestureRecognizer];
     
     [self customizeSectionCoverImages];
+    [self customizeSectionStories];
 }
 
 - (void)didReceiveMemoryWarning
@@ -288,4 +291,37 @@
     }];
 }
 
+- (void)customizeSectionStories
+{
+    NSLog(@"customizeSectionStories");
+
+    UIScrollView *scrollView;
+    UIImageView *imageView;
+    
+    scrollView = [[UIScrollView alloc] init];
+    imageView = [[UIImageView alloc] init];
+    
+    [imageView setImage:[UIImage imageNamed:@"section-headlines-posts"]];
+    [imageView sizeToFit];
+    
+    [self.sectionView insertSubview:scrollView aboveSubview:self.sectionCoverImageView];
+    [scrollView addSubview:imageView];
+    
+    scrollView.translatesAutoresizingMaskIntoConstraints  = NO;
+    imageView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    NSLog(@"%f", screen.size.height);
+    NSLog(@"%f", imageView.frame.size.height);
+    NSLog(@"%f", screen.size.height - imageView.frame.size.height);
+    
+    NSDictionary *viewsDictionary = @{
+                                      @"scrollView":scrollView,
+                                      @"imageView":imageView
+                                      };
+    [self.sectionView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
+    [self.sectionView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-314.0-[scrollView]|" options:0 metrics: 0 views:viewsDictionary]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|" options:0 metrics: 0 views:viewsDictionary]];
+    [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageView]|" options:0 metrics: 0 views:viewsDictionary]];
+}
 @end
