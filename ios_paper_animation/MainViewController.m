@@ -33,6 +33,7 @@
 - (void)loadSectionCoverImage;
 
 - (void)customizeSectionStories;
+
 @end
 
 @implementation MainViewController
@@ -324,4 +325,5 @@
     [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[imageView]|" options:0 metrics: 0 views:viewsDictionary]];
     [scrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[imageView]|" options:0 metrics: 0 views:viewsDictionary]];
 }
+
 @end

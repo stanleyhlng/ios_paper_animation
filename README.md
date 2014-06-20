@@ -16,7 +16,7 @@ This is an iOS prototyping application for Paper navigation.
  * [x] Optional: Dragging on the scrollable feed of headlines should change the scale of the feed
 
 ## Time spent
-x hours spent in total
+10 hours spent in total
 
 ## Learnings
  * Animation
@@ -37,5 +37,9 @@ x hours spent in total
 ```
     
 ## Libraries
- * AVHexColor 1.2.0
- * Reveal-iOS-SDK 1.0.4
+```
+platform :ios, '7.0'
+pod 'TTTAttributedLabel'
+pod 'AVHexColor', '~> 1.2.0'
+pod 'Reveal-iOS-SDK'
+```
