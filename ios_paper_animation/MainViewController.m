@@ -66,7 +66,7 @@
                                                     action:@selector(onSectionViewTap:)];
     [self.sectionView addGestureRecognizer:tapGestureRecognizer];
     
-    [self.view setBackgroundColor:[AVHexColor colorWithHexString:@"#000000"]];
+    //[self.view setBackgroundColor:[AVHexColor colorWithHexString:@"#000000"]];
 }
 
 - (void)didReceiveMemoryWarning

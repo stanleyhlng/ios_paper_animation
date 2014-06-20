@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BackgroundViewController.h"
 #import "MainViewController.h"
 
 @implementation AppDelegate
@@ -15,14 +16,18 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    
-    MainViewController *vc = [[MainViewController alloc] init];
-    self.window.rootViewController = vc;
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[BackgroundViewController alloc] init];
+    [self.window makeKeyAndVisible];
     
     [self customizeStatusBar];
+
+    self.foregroundWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.foregroundWindow.backgroundColor = [UIColor clearColor];
+    self.foregroundWindow.rootViewController = [[MainViewController alloc] init];
+    self.foregroundWindow.windowLevel = UIWindowLevelStatusBar;
+    self.foregroundWindow.hidden = NO;
     
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

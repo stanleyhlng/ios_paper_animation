@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2075A4921953F82000195A0B /* BackgroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2075A4901953F82000195A0B /* BackgroundViewController.m */; };
+		2075A4931953F82000195A0B /* BackgroundViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2075A4911953F82000195A0B /* BackgroundViewController.xib */; };
 		2087FCBF1952AD8800EF32BE /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2087FCBD1952AD8800EF32BE /* MainViewController.m */; };
 		2087FCC01952AD8800EF32BE /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2087FCBE1952AD8800EF32BE /* MainViewController.xib */; };
 		20BFB7871951665900EE6C69 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFB7861951665900EE6C69 /* Foundation.framework */; };
@@ -35,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2075A48F1953F82000195A0B /* BackgroundViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundViewController.h; sourceTree = "<group>"; };
+		2075A4901953F82000195A0B /* BackgroundViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundViewController.m; sourceTree = "<group>"; };
+		2075A4911953F82000195A0B /* BackgroundViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundViewController.xib; sourceTree = "<group>"; };
 		2087FCBC1952AD8800EF32BE /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		2087FCBD1952AD8800EF32BE /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		2087FCBE1952AD8800EF32BE /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -83,6 +88,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2075A48E1953F80E00195A0B /* Background View */ = {
+			isa = PBXGroup;
+			children = (
+				2075A48F1953F82000195A0B /* BackgroundViewController.h */,
+				2075A4901953F82000195A0B /* BackgroundViewController.m */,
+				2075A4911953F82000195A0B /* BackgroundViewController.xib */,
+			);
+			name = "Background View";
+			sourceTree = "<group>";
+		};
 		2087FCC11952ADA100EF32BE /* Main View */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +143,7 @@
 		20BFB78C1951665900EE6C69 /* ios_paper_animation */ = {
 			isa = PBXGroup;
 			children = (
+				2075A48E1953F80E00195A0B /* Background View */,
 				2087FCC11952ADA100EF32BE /* Main View */,
 				20BFB7951951665900EE6C69 /* AppDelegate.h */,
 				20BFB7961951665900EE6C69 /* AppDelegate.m */,
@@ -243,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2075A4931953F82000195A0B /* BackgroundViewController.xib in Resources */,
 				20BFB7911951665900EE6C69 /* InfoPlist.strings in Resources */,
 				2087FCC01952AD8800EF32BE /* MainViewController.xib in Resources */,
 				20BFB7991951665900EE6C69 /* Images.xcassets in Resources */,
@@ -297,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2075A4921953F82000195A0B /* BackgroundViewController.m in Sources */,
 				20BFB7971951665900EE6C69 /* AppDelegate.m in Sources */,
 				2087FCBF1952AD8800EF32BE /* MainViewController.m in Sources */,
 				20BFB7931951665900EE6C69 /* main.m in Sources */,
